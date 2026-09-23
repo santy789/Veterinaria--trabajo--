@@ -1,32 +1,43 @@
-# Veterinaria Huellas
+# Sistema de Gestión Veterinaria - VetCare
 
-## Caso de estudio
-Sistema web prototipo para la gestión de una veterinaria.
+## 👥 Información del Equipo Desarrollador
+* **Institución:** Instituto Superior de Formación Técnica Leopoldo Marechal
+* **Carrera:** Tecnicatura Superior en Desarrollo de Software
+* **Asignatura:** Prácticas Profesionalizantes I
+* **Profesor:** Alexander Seling
+* **Ayudante de Cátedra:** Jorge Marinoni
 
-## Equipo desarrollador
-- Santiago Di Virgilio — GitHub: `santy789`
-- Francisco Gonzalez de Almeida — GitHub: `emanresufran`
+### Integrantes:
+* **Santiago di Virgilio** - GitHub: [santy789](https://github.com/santy789)
+* **Francisco Gonzalez de Almeida** - GitHub: [emanresufran](https://github.com/emanresufran)
 
-## Descripción del sistema
-El prototipo representa una interfaz web para una veterinaria. Permite simular la solicitud de turnos, consultar turnos registrados y visualizar un historial clínico básico de las mascotas.
+---
 
-## Pantallas desarrolladas
-1. **Inicio (`index.html`)**: presenta el sistema y sus principales funciones.
-2. **Solicitar turno**: formulario para registrar los datos de la mascota, motivo, fecha y horario.
-3. **Confirmación**: simula el resultado exitoso de la solicitud.
-4. **Mis turnos**: muestra turnos de ejemplo y su estado.
-5. **Historial clínico**: muestra antecedentes básicos de las mascotas.
+## 📌 Descripción del Sistema
+**VetCare** es una plataforma web desarrollada para la gestión integral de una clínica veterinaria. El sistema permite administrar la atención médica de los pacientes (mascotas), la agenda de turnos, el historial clínico y el acceso de los clientes a la información de sus mascotas. 
 
-## Funcionalidades previstas para la siguiente entrega
-- Registro e inicio de sesión de clientes.
-- Alta y modificación de mascotas.
-- Gestión real de turnos.
-- Confirmación y cancelación de turnos.
-- Historial clínico completo.
-- Gestión de veterinarios y horarios.
-- Persistencia de datos mediante una base de datos.
+El sistema cuenta con un control de acceso según el rol del usuario conectado (Veterinario/Administrador vs. Cliente/Dueño de mascota).
 
-## Tecnologías
-- HTML5 semántico.
-- CSS externo.
-- Sin JavaScript, frameworks ni librerías externas, de acuerdo con las restricciones del Hito 2.
+---
+
+## 🖥️ Pantallas Desarrolladas
+1. **`index.html` (Inicio / Login):** 
+   * Formulario de inicio de sesión simulado.
+   * Presentación general de la veterinaria y accesos principales.
+2. **`pages/turnos.html` (Gestión de Turnos):** 
+   * **Cliente:** Formulario para solicitar nuevos turnos para sus mascotas.
+   * **Veterinario:** Vista general de los turnos programados del día y opción para cambiar su estado.
+3. **`pages/mis-mascotas.html` (Mis Mascotas / Pacientes):** 
+   * **Cliente:** Listado de sus mascotas registradas con ficha básica.
+   * **Veterinario:** Ficha clínica de los pacientes atendidos e historial de consultas.
+4. **`pages/historial.html` (Historial Clínico / Consultas):** 
+   * Muestra de atenciones previas, diagnósticos y tratamientos asignados por el profesional.
+
+---
+
+## ⚙️ Funcionalidades Implementadas (Hito 3)
+* **Modelado de Datos JSON (`data/datos.json`):** Estructura que almacena usuarios (médicos y clientes), mascotas (pacientes) y turnos asignados[cite: 1].
+* **Inicio de Sesión Simulado:** Autenticación por correo y contraseña validada contra `datos.json`[cite: 1].
+* **Persistencia con `localStorage`:** Modificación y creación de turnos guardados directamente en el almacenamiento local del navegador[cite: 1].
+* **Renderizado Dinámico mediante JS:** Generación dinámica de tablas de turnos y fichas de mascotas manipulate el DOM con `fetch()` y Web APIs[cite: 1].
+* **Adaptación de Interfaz según Rol:** Vistas diferenciadas dependiendo de si ingresa un profesional veterinario o un cliente[cite: 1].
