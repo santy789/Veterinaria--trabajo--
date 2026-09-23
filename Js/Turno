@@ -1,0 +1,81 @@
+// js/turnos.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sesionStr = localStorage.getItem('usuarioLogueado');
+  if (!sesionStr) {
+    window.location.href = '../index.html';
+    return;
+  }
+
+  const usuario = JSON.parse(sesionStr);
+  const datos = JSON.parse(localStorage.getItem('datosVet'));
+
+  renderizarTurnos(usuario, datos);
+
+  // Manejar el formulario para agregar un nuevo turno
+  const formTurno = document.getElementById('form-nuevo-turno');
+  if (formTurno) {
+    formTurno.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nuevoTurno = {
+        id: Date.now(),
+        mascotaId: parseInt(document.getElementById('select-mascota').value),
+        veterinarioId: parseInt(document.getElementById('select-vet').value),
+        fecha: document.getElementById('fecha').value,
+        hora: document.getElementById('hora').value,
+        motivo: document.getElementById('motivo').value,
+        estado: "Pendiente"
+      };
+
+      // Modificar estado almacenado en localStorage
+      datos.turnos.push(nuevoTurno);
+      localStorage.setItem('datosVet', JSON.stringify(datos));
+
+      alert('Turno guardado correctamente');
+      formTurno.reset();
+      renderizarTurnos(usuario, datos); // Reflejar modificaciones en la vista
+    });
+  }
+});
+
+function renderizarTurnos(usuario, datos) {
+  const contenedor = document.getElementById('contenedor-turnos');
+  if (!contenedor) return;
+
+  contenedor.innerHTML = ''; // Limpiar el contenido anterior
+
+  // Si es cliente, solo ve los turnos de sus mascotas. Si es veterinario, ve todos los suyos.
+  let turnosFiltrados = [];
+
+  if (usuario.rol === 'cliente') {
+    const misMascotasIds = datos.mascotas
+      .filter(m => m.duenoId === usuario.id)
+      .map(m => m.id);
+
+    turnosFiltrados = datos.turnos.filter(t => misMascotasIds.includes(t.mascotaId));
+  } else if (usuario.rol === 'veterinario') {
+    turnosFiltrados = datos.turnos.filter(t => t.veterinarioId === usuario.id);
+  }
+
+  if (turnosFiltrados.length === 0) {
+    contenedor.innerHTML = '<p>No hay turnos registrados.</p>';
+    return;
+  }
+
+  // Generar dinámicamente elementos en el DOM mediante manipulación de arrays y métodos del DOM
+  turnosFiltrados.forEach(turno => {
+    const mascota = datos.mascotas.find(m => m.id === turno.mascotaId);
+    
+    const tarjeta = document.createElement('div');
+    tarjeta.classList.add('tarjeta-turno');
+    tarjeta.innerHTML = `
+      <h3>Turno #${turno.id}</h3>
+      <p><strong>Mascota:</strong> ${mascota ? mascota.nombre : 'Desconocida'}</p>
+      <p><strong>Fecha y Hora:</strong> ${turno.fecha} a las ${turno.hora} hs</p>
+      <p><strong>Motivo:</strong> ${turno.motivo}</p>
+      <p><strong>Estado:</strong> ${turno.estado}</p>
+    `;
+    contenedor.appendChild(tarjeta);
+  });
+}
