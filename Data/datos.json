@@ -1,0 +1,140 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Dra. Valeria Gómez",
+      "email": "valeria@veterinaria.com",
+      "pass": "1234",
+      "rol": "veterinario"
+    },
+    {
+      "id": 2,
+      "nombre": "Dr. Carlos Rossi",
+      "email": "carlos@veterinaria.com",
+      "pass": "1234",
+      "rol": "veterinario"
+    },
+    {
+      "id": 3,
+      "nombre": "Santiago di Virgilio",
+      "email": "santiago@gmail.com",
+      "pass": "1234",
+      "rol": "cliente"
+    },
+    {
+      "id": 4,
+      "nombre": "Francisco Gonzalez",
+      "email": "francisco@gmail.com",
+      "pass": "1234",
+      "rol": "cliente"
+    }
+  ],
+  "mascotas": [
+    {
+      "id": 101,
+      "duenoId": 3,
+      "nombre": "Firulais",
+      "especie": "Perro",
+      "raza": "Labrador",
+      "edad": 4
+    },
+    {
+      "id": 102,
+      "duenoId": 3,
+      "nombre": "Michi",
+      "especie": "Gato",
+      "raza": "Siames",
+      "edad": 2
+    },
+    {
+      "id": 103,
+      "duenoId": 4,
+      "nombre": "Rex",
+      "especie": "Perro",
+      "raza": "Pastor Alemán",
+      "edad": 5
+    },
+    {
+      "id": 104,
+      "duenoId": 4,
+      "nombre": "Pelusa",
+      "especie": "Gato",
+      "raza": "Persa",
+      "edad": 1
+    }
+  ],
+  "turnos": [
+    {
+      "id": 1001,
+      "mascotaId": 101,
+      "veterinarioId": 1,
+      "fecha": "2026-10-01",
+      "hora": "10:00",
+      "motivo": "Vacunación anual",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1002,
+      "mascotaId": 101,
+      "veterinarioId": 2,
+      "fecha": "2026-10-15",
+      "hora": "11:30",
+      "motivo": "Control general",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1003,
+      "mascotaId": 102,
+      "veterinarioId": 1,
+      "fecha": "2026-10-02",
+      "hora": "16:00",
+      "motivo": "Desparasitación",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1004,
+      "mascotaId": 102,
+      "veterinarioId": 2,
+      "fecha": "2026-10-20",
+      "hora": "17:00",
+      "motivo": "Chequeo de oído",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1005,
+      "mascotaId": 103,
+      "veterinarioId": 1,
+      "fecha": "2026-10-05",
+      "hora": "09:00",
+      "motivo": "Consulta por cojera",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1006,
+      "mascotaId": 103,
+      "veterinarioId": 2,
+      "fecha": "2026-10-12",
+      "hora": "10:30",
+      "motivo": "Revisión de placa",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1007,
+      "mascotaId": 104,
+      "veterinarioId": 1,
+      "fecha": "2026-10-08",
+      "hora": "14:00",
+      "motivo": "Corte de uñas y limpieza",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 1008,
+      "mascotaId": 104,
+      "veterinarioId": 2,
+      "fecha": "2026-10-22",
+      "hora": "15:30",
+      "motivo": "Control dermatológico",
+      "estado": "Pendiente"
+    }
+  ]
+    }
