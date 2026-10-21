@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Solicitar turno - Veterinaria Huellas</title><link rel="stylesheet" href="../css/styles.css"></head>
+<body><header><h1>Solicitar turno</h1><p>Reservá una consulta para tu mascota</p></header>
+<nav><a href="../index.html">Inicio</a><a href="solicitar-turno.html">Solicitar turno</a><a href="mis-turnos.html">Mis turnos</a><a href="historial-clinico.html">Historial clínico</a></nav>
+<main><section class="panel"><form id="form-turno"><label for="dueno">Cliente</label><select id="dueno" required><option value="3">Santiago di Virgilio</option><option value="4">Francisco Gonzalez</option></select>
+<label for="mascota">Mascota</label><select id="mascota" required></select><label for="vet">Veterinario</label><select id="vet"><option value="1">Dra. Valeria Gómez</option><option value="2">Dr. Carlos Rossi</option></select>
+<label for="fecha">Fecha</label><input id="fecha" type="date" required><label for="hora">Hora</label><input id="hora" type="time" required><label for="motivo">Motivo</label><textarea id="motivo" required></textarea><button type="submit">Guardar turno</button></form><p id="mensaje" aria-live="polite"></p></section></main><footer>Veterinaria Huellas</footer>
+<script>
+(async()=>{if(!localStorage.getItem('datosVet')){const r=await fetch('../data/datos.json');localStorage.setItem('datosVet',JSON.stringify(await r.json()));}
+const datos=JSON.parse(localStorage.getItem('datosVet'));const dueno=document.getElementById('dueno'), mascota=document.getElementById('mascota');
+function llenar(){mascota.innerHTML='';datos.mascotas.filter(m=>m.duenoId===Number(dueno.value)).forEach(m=>mascota.add(new Option(m.nombre+' ('+m.especie+')',m.id)))}dueno.addEventListener('change',llenar);llenar();
+document.getElementById('form-turno').addEventListener('submit',e=>{e.preventDefault();datos.turnos.push({id:Date.now(),mascotaId:Number(mascota.value),veterinarioId:Number(document.getElementById('vet').value),fecha:document.getElementById('fecha').value,hora:document.getElementById('hora').value,motivo:document.getElementById('motivo').value,estado:'Pendiente'});localStorage.setItem('datosVet',JSON.stringify(datos));document.getElementById('mensaje').textContent='Turno guardado correctamente.';e.target.reset();llenar();});
+})().catch(e=>console.error(e));
+</script></body></html>
