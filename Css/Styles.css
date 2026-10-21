@@ -1,0 +1,25 @@
+* { box-sizing: border-box; }
+:root { --verde: #287a62; --verde-oscuro: #1d5b49; --fondo: #f4f8f6; --texto: #24332d; --borde: #d9e5df; }
+body { margin: 0; font-family: Arial, sans-serif; color: var(--texto); background: var(--fondo); line-height: 1.6; }
+header { padding: 2rem 1rem; text-align: center; color: white; background: var(--verde); }
+header h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+header p { margin: .35rem 0 0; }
+nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; padding: .8rem; background: var(--verde-oscuro); }
+nav a { color: white; text-decoration: none; padding: .55rem .85rem; border-radius: 6px; }
+nav a:hover, nav a:focus { background: rgba(255,255,255,.16); }
+main { width: min(100% - 2rem, 1000px); margin: 2rem auto; }
+.hero { padding: 2rem; border-radius: 14px; background: white; text-align: center; box-shadow: 0 4px 16px #173d2b12; }
+.hero h2 { margin-top: 0; color: var(--verde-oscuro); }
+.boton, button { display: inline-block; border: 0; border-radius: 7px; padding: .7rem 1rem; background: var(--verde); color: white; font: inherit; text-decoration: none; cursor: pointer; }
+.boton:hover, button:hover { background: var(--verde-oscuro); }
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+article, .panel, .tarjeta-turno { background: white; padding: 1.25rem; border: 1px solid var(--borde); border-radius: 10px; }
+article h3 { color: var(--verde-oscuro); margin-top: 0; }
+.panel { max-width: 760px; margin: 0 auto; }
+label { display: block; margin: .8rem 0 .25rem; font-weight: bold; }
+input, select, textarea { width: 100%; padding: .65rem; border: 1px solid #b9cbc1; border-radius: 6px; font: inherit; background: white; }
+form button { margin-top: 1rem; }
+.mensaje { padding: .75rem; background: #e6f4ed; border-radius: 6px; }
+.tarjeta-turno { margin: .75rem 0; }
+footer { text-align: center; padding: 1.25rem; color: #53675d; }
+@media (max-width: 520px) { main { width: min(100% - 1rem, 1000px); margin: 1rem auto; } .hero { padding: 1.2rem; } nav { gap: .15rem; } nav a { padding: .45rem .55rem; } }
